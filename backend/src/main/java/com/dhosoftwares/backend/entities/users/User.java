@@ -3,6 +3,8 @@ package com.dhosoftwares.backend.entities.users;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.dhosoftwares.backend.entities.modules.scheduling.Scheduling;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -11,6 +13,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
 
@@ -32,6 +35,9 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
+
+    @OneToMany(mappedBy = "user")
+    private Set<Scheduling> schedulings = new HashSet<>();
 
     public User(){
 
