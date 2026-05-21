@@ -29,6 +29,7 @@ public class User {
     private String email;
     private String username;
     private String password;
+    private Boolean active;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "tb_user_role",
@@ -43,12 +44,13 @@ public class User {
 
     }
 
-    public User(Long id, String name, String email, String username, String password) {
+    public User(Long id, String name, String email, String username, String password, Boolean active) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.username = username;
         this.password = password;
+        this.active = active;
     }
 
     public void setId(Long id) {
@@ -69,6 +71,10 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setActive(Boolean active){
+        this.active = active;
     }
 
     public void addRole(Role role){

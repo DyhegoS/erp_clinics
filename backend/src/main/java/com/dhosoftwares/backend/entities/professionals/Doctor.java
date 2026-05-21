@@ -1,4 +1,9 @@
-package com.dhosoftwares.backend.entities.misc;
+package com.dhosoftwares.backend.entities.professionals;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.dhosoftwares.backend.entities.modules.exams.Exam;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,15 +23,17 @@ public class Doctor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String email;
+    private String specialty;
     private String crm;
+
+    private List<Exam> exams = new ArrayList<>();
 
     public Doctor(){}
 
-    public Doctor(Long id, String name, String email, String crm) {
+    public Doctor(Long id, String name, String specialty, String crm) {
         this.id = id;
         this.name = name;
-        this.email = email;
+        this.specialty = specialty;
         this.crm = crm;
     }
 }
